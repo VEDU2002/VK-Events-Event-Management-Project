@@ -1,0 +1,21 @@
+
+<a href="/events/" style="text-decoration: none; font-weight: bold;">← Back to Events</a>
+<hr>
+<h4 class="mt-5" style="font-size:x-large;">Event Highlights</h4>
+
+<div class="row" >
+    {% for sub in sub_cards %}
+    <div class="col-12 mb-4" >
+        <div style="overflow: hidden;">
+            {% if sub.image %}
+            <img src="{{ sub.image.url }}" alt="{{ sub.title }}" loading="lazy"
+                 style="width: 250px; height: auto; object-fit: cover; border-radius: 8px; float: left; margin-right: 15px; margin-bottom: 10px;">
+            {% endif %}
+            <h5 style="font-size: large; "><strong>{{ sub.title }}</strong></h5>
+            <p style="font-size: large;">{{ sub.description }}</p>
+        </div>
+    </div>
+    {% empty %}
+    <p>No additional highlights for this event.</p>
+    {% endfor %}
+</div>

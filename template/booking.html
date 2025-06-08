@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Booking
+{% endblock %}
+
+{% block content %}
+<style>
+  .booking-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: 80vh;
+    background: #f9f9f9;
+  }
+
+  .booking-card {
+    background: #fff;
+    max-width: 600px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    padding: 30px 40px;
+    box-sizing: border-box;
+  }
+
+  .booking-title {
+    text-align: center;
+    font-weight: 700;
+    color: rgb(244, 23, 200);
+    margin-bottom: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  form p {
+    margin-bottom: 15px;
+    font-family: Arial, sans-serif;
+  }
+
+  form input, form select, form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 6px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  .booking-btn-wrapper {
+    text-align: center;
+  }
+
+  .booking-btn {
+    background-color: rgb(244, 23, 200);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .booking-btn:hover {
+    background-color: rgb(200, 15, 170);
+  }
+</style>
+<div class="booking-container">
+    <div class="booking-card">
+        <h2 class="booking-title">Book Your Events</h2>
+        <form method="POST" novalidate>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="booking-btn-wrapper">
+                <button type="submit" class="booking-btn">Book Now</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

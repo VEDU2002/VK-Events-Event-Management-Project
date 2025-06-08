@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+Contact
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Contact Us</h2>
+    
+    <div class="row">
+        <!-- Contact Info -->
+        <div class="col-md-6">
+            <h5>Visit Our Store</h5>
+            <p>
+                Wagbil Rd, Anu Nagar, Vijay Nagari,<br>
+                Thane West, Thane, Maharashtra 400615
+            </p>
+            <p><b>For any queries or delivery related issue, you can contact us here:</b></p>
+            <p><strong>Phone:</strong> +91-9876543210</p>
+            <p><strong>Email:</strong> vedantkotlapure2770@gmail.com</p>
+        </div>
+
+        <!-- Google Map -->
+        <div class="col-md-6">
+            <iframe 
+                src="https://www.google.com/maps?q=Wagbil%20Rd,%20Anu%20Nagar,%20Vijay%20Nagari,%20Thane%20West,%20Thane,%20Maharashtra%20400615&output=embed"
+                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+    </div>
+</div>
+{% endblock %}

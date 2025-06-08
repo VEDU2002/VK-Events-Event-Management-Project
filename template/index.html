@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="jumbotron text-center text-white" style="background-color: lightcoral;">
+
+    <div class="container" style="margin-top: 150px;">
+        <h1 class="display-4 fw-bold">Make Your Moments Unforgettable</h1>
+        <p class="lead">Book, plan, and celebrate your dream events with us</p>
+        <button><a href="{% url 'booking' %}" class="btn btn-lg btn-light mt-3">Book Now</a></button>
+    </div>
+</section>
+
+
+<!-- Why Choose Us -->
+<section class="bg-light py-5">
+    <div class="container text-center">
+        <h3 class="mb-4">Why Choose Our Event Services?</h3> <br>
+        <div class="row">
+            <div class="col-md-4">
+                <h5>✨ Custom Themes</h5>
+                <p>Tailored decor & design to match your vision.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>📋 Hassle-Free Planning</h5>
+                <p>We take care of everything — so you don't have to.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>🎉 100+ Happy Clients</h5>
+                <p>Trusted by families and corporate houses alike.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

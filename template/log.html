@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .input-box label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: #555;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: 0.3s ease;
+    }
+
+    .input-box input:focus {
+      border-color: #ff9966;
+      box-shadow: 0 0 5px rgba(255, 153, 102, 0.4);
+    }
+
+    .button input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background-color: #ff9966;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 15px;
+    }
+
+    .button input:hover {
+      background-color: #e68557;
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        margin: 10px;
+        padding: 20px;
+      }
+    }
+    button{
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 8px;
+      background-color: #ccc;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">Login</div>
+    <div class="content">
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <label>User Name :</label>
+            <input type="text" name="username" required>
+          </div>
+          <div class="input-box">
+            <label>Password :</label>
+            <input type="password" name="password" required>
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" name="submit" value="Log In">
+        </div>
+        <div class="button">
+           <button><a href="{% url 'index' %}" >Back to Home</a></button>
+        </div>
+        <div style="text-align: center; margin-top: 15px;">
+          <a href="{% url 'password_reset' %}" style="color: #ff9966; text-decoration: none; font-weight: bold;">
+          Forgot Password?</a>
+        </div>
+      </form>
+      <div>
+        {% for message in messages %}
+        <script>
+          alert('{{ message }}');
+        </script>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
