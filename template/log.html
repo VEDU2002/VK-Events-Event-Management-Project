@@ -128,17 +128,18 @@
            <button><a href="{% url 'index' %}" >Back to Home</a></button>
         </div>
         <div style="text-align: center; margin-top: 15px;">
-          <a href="{% url 'password_reset' %}" style="color: #ff9966; text-decoration: none; font-weight: bold;">
-          Forgot Password?</a>
+          <a href="{% url 'reset_via_otp' %}" style="color: #ff9966; text-decoration: none; font-weight: bold; margin-left: 10px;">Reset via OTP</a>
         </div>
+
       </form>
-      <div>
-        {% for message in messages %}
-        <script>
-          alert('{{ message }}');
-        </script>
-        {% endfor %}
-      </div>
+      {% if messages %}
+        <div style="margin-top: 15px;">
+          {% for message in messages %}
+            <p style="color: red; text-align: center;">{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
     </div>
   </div>
 </body>
