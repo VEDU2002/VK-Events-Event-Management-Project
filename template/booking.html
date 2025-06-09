@@ -72,18 +72,59 @@
     background-color: rgb(200, 15, 170);
   }
 </style>
+
 <div class="booking-container">
-    <div class="booking-card">
-        <h2 class="booking-title">Book Your Events</h2>
-        <form method="POST" novalidate>
-            {% csrf_token %}
-            {{ form.as_p }}
-            <div class="booking-btn-wrapper">
-                <button type="submit" class="booking-btn">Book Now</button>
-            </div>
-        </form>
-    </div>
+  <div class="booking-card">
+    <h2 class="booking-title">Book Your Events</h2>
+    
+    <form id="booking-form" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <div class="booking-btn-wrapper">
+        <button type="button" class="booking-btn" id="rzp-button1">Pay ₹100 & Book</button>
+      </div>
+    </form>
+  </div>
 </div>
 
+<!-- Razorpay Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  document.getElementById('rzp-button1').onclick = function(e) {
+    e.preventDefault();
+
+    var options = {
+      "key": "{{ razorpay_key }}",
+      "amount": "10000",  // ₹100 in paise
+      "currency": "INR",
+      "name": "Event Booking",
+      "description": "Pay token to confirm booking",
+      "handler": function (response) {
+        // Submit form after successful payment
+        var form = document.getElementById('booking-form');
+
+        // Optional: Add Razorpay payment ID as hidden input
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "razorpay_payment_id";
+        input.value = response.razorpay_payment_id;
+        form.appendChild(input);
+
+        form.submit();
+      },
+      "prefill": {
+        "name": "{{ request.user.first_name }}",
+        "email": "{{ request.user.email }}"
+      },
+      "theme": {
+        "color": "#f417c8"
+      }
+    };
+
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+  };
+</script>
 
 {% endblock %}
