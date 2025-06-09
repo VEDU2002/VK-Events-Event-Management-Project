@@ -12,23 +12,7 @@ urlpatterns = [
     path('register/', views.register, name='register'), 
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
-
-    path('password-reset/', auth_views.PasswordResetView.as_view(
-        template_name='registration/password_reset_form.html'
-    ), name='password_reset'),
-
-    #  Step 2: Confirmation email has been sent
-    path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(
-        template_name='registration/password_reset_done.html'
-    ), name='password_reset_done'),
-
-    #  Step 3: Password reset link clicked, set new password
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(
-        template_name='registration/password_reset_confirm.html'
-    ), name='password_reset_confirm'),
-
-    #  Step 4: Password reset complete
-    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(
-        template_name='registration/password_reset_complete.html'
-    ), name='password_reset_complete'),
+    path('password-reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+    path('reset-otp/', views.reset_via_otp, name='reset_via_otp'),
+    path('verify-otp/', views.verify_otp, name='verify_otp'),
 ]
